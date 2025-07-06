@@ -28,3 +28,7 @@ exclude_patterns = []
 html_theme = 'sphinx_rtd_theme'
 
 html_static_path = ['_static']
+html_theme_options = {
+    'analytics_id': 'G-9MQ42FBLE9',  #  Provided by Google in your dashboard
+    'analytics_anonymize_ip': False,
+}
