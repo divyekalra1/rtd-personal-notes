@@ -9,14 +9,13 @@ pentesting-docs documentation
 Add your content using ``reStructuredText`` syntax. See the
 `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
 documentation for details.
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
+   
 .. toctree::   
-   foldering/myfile1.md
-   foldering/myfile2.md
-   myfile.md
+   :maxdepth: 2
+   :caption: HackTheBox CPTS:
+
+   Pentesting Process Overview <foldering/pentesting_process_overview>
+   Getting Started with HackTheBox <foldering/getting_started_with_hackthebox>
+   Nmap <foldering/nmap>
+   Footprinting <foldering/footprinting>
 
