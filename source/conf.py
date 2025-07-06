@@ -13,7 +13,7 @@ author = 'liquidbread'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser','sphinx.ext.autosectionlabel']
+extensions = ['myst_parser','sphinx.ext.autosectionlabel','sphinx_search.extension']
 
 source_suffix = ['.rst', '.md']
 
