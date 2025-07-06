@@ -20,7 +20,7 @@ Make use of the keyboard shortcut ``/`` to search for something.
    Shells and Payloads <foldering/shells-and-payloads>
    Attacking Common Services <foldering/attacking-common-services>
    Using Web Proxies <foldering/using-web-proxies>
-   Attacking Web app with ffuf <foldering/attacking-web-app-with-ffuf>
+   Attacking Web app with ffuf <foldering/attacking-web-applications-with-ffuf>
    SQL Injection Fundamentals <foldering/sql-injection-fundamentals>
    SQLMap Essentials <foldering/sqlmap-essentials>
    Cross-Site Scripting (XSS) <foldering/xss>
