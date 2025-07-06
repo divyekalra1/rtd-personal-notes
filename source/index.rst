@@ -12,6 +12,7 @@ documentation for details.
    
 .. toctree::   
    :maxdepth: 2
+   :hidden:
    :caption: HackTheBox CPTS:
 
    Pentesting Process Overview <foldering/pentesting_process_overview>
