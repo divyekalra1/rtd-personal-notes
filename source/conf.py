@@ -32,3 +32,6 @@ html_theme_options = {
     'analytics_id': 'G-9MQ42FBLE9',  #  Provided by Google in your dashboard
     'analytics_anonymize_ip': False,
 }
+
+def setup(app):
+    app.add_css_file('style.css')
