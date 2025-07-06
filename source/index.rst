@@ -8,7 +8,7 @@ Blogs and Personal Notes
 
 Make use of the keyboard shortcut ``/`` to search for something.
 
-.. toctree::   
+.. toctree::
    :maxdepth: 2
    :hidden:
    :caption: HackTheBox CPTS:
@@ -17,4 +17,9 @@ Make use of the keyboard shortcut ``/`` to search for something.
    Getting Started with HackTheBox <foldering/getting_started_with_hackthebox>
    Nmap <foldering/nmap>
    Footprinting <foldering/footprinting>
-
+   Shells and Payloads <foldering/shells-and-payloads>
+   Attacking Common Services <foldering/attacking-common-services>
+   Using Web Proxies <foldering/using-web-proxies>
+   Attacking Web app with ffuf <foldering/attacking-web-app-with-ffuf>
+   SQL Injection Fundamentals <foldering/sql-injection-fundamentals>
+   Attacking Common Applications <foldering/attacking-common-applications>
