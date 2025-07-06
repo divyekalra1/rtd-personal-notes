@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'pentesting-docs'
-copyright = '2025, liquidbread'
-author = 'liquidbread'
+project = 'Welcome!'
+copyright = '2025, grilledBread'
+author = 'grilledBread'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
