@@ -22,4 +22,10 @@ Make use of the keyboard shortcut ``/`` to search for something.
    Using Web Proxies <foldering/using-web-proxies>
    Attacking Web app with ffuf <foldering/attacking-web-app-with-ffuf>
    SQL Injection Fundamentals <foldering/sql-injection-fundamentals>
+   SQLMap Essentials <foldering/sqlmap-essentials>
+   Cross-Site Scripting (XSS) <foldering/xss>
+   File Inclusion <foldering/file-inclusion>
+   File Upload Attacks <foldering/file-upload-attacks>
+   Command Injections <foldering/command-injections>
+   Web Attacks <foldering/web-attacks>
    Attacking Common Applications <foldering/attacking-common-applications>
