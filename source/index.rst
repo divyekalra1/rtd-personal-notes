@@ -13,7 +13,7 @@ Make use of the keyboard shortcut ``/`` to search for something.
    :hidden:
    :caption: HackTheBox CPTS:
 
-   Pentesting Process Overview <foldering/pentesting_process_overview>
+   Pentesting Process <foldering/pentesting_process>
    Getting Started with HackTheBox <foldering/getting_started_with_hackthebox>
    Nmap <foldering/nmap>
    Footprinting <foldering/footprinting>
