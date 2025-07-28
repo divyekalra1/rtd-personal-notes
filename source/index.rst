@@ -13,19 +13,26 @@ Make use of the keyboard shortcut ``/`` to search for something.
    :hidden:
    :caption: HackTheBox CPTS:
 
-   Pentesting Process <foldering/pentesting_process>
-   Getting Started with HackTheBox <foldering/getting_started_with_hackthebox>
-   Nmap <foldering/nmap>
-   Footprinting <foldering/footprinting>
-   Shells and Payloads <foldering/shells-and-payloads>
-   Attacking Common Services <foldering/attacking-common-services>
-   Using Web Proxies <foldering/using-web-proxies>
-   Attacking Web app with ffuf <foldering/attacking-web-applications-with-ffuf>
-   SQL Injection Fundamentals <foldering/sql-injection-fundamentals>
-   SQLMap Essentials <foldering/sqlmap-essentials>
-   Cross-Site Scripting (XSS) <foldering/xss>
-   File Inclusion <foldering/file-inclusion>
-   File Upload Attacks <foldering/file-upload-attacks>
-   Command Injections <foldering/command-injections>
-   Web Attacks <foldering/web-attacks>
-   Attacking Common Applications <foldering/attacking-common-applications>
+   Pentesting Process <htb-cpts/pentesting_process>
+   Getting Started with HackTheBox <htb-cpts/getting_started_with_hackthebox>
+   Nmap <htb-cpts/nmap>
+   Footprinting <htb-cpts/footprinting>
+   Shells and Payloads <htb-cpts/shells-and-payloads>
+   Attacking Common Services <htb-cpts/attacking-common-services>
+   Using Web Proxies <htb-cpts/using-web-proxies>
+   Attacking Web app with ffuf <htb-cpts/attacking-web-applications-with-ffuf>
+   SQL Injection Fundamentals <htb-cpts/sql-injection-fundamentals>
+   SQLMap Essentials <htb-cpts/sqlmap-essentials>
+   Cross-Site Scripting (XSS) <htb-cpts/xss>
+   File Inclusion <htb-cpts/file-inclusion>
+   File Upload Attacks <htb-cpts/file-upload-attacks>
+   Command Injections <htb-cpts/command-injections>
+   Web Attacks <htb-cpts/web-attacks>
+   Attacking Common Applications <htb-cpts/attacking-common-applications>
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Duke Nukem II:
+   
+   Reverse Engineering Project <projects/duke-nukem.rst>
