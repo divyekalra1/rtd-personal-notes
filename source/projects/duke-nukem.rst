@@ -2,6 +2,16 @@
 Duke Nukem II
 ##########################################
 
+Who is this for?
+================
+
+This walkthrough is for anyone interested in binary exploitation, reverse engineering, or retro game hacking. You’ll get the most out of it if you have some familiarity with:
+- Basic x86-64 assembly
+- Debugging tools (like Ghidra, GDB, or Eclipse)
+- Concepts like buffer overflows and shellcode
+
+Absolute beginners are welcome! I’ll explain each step and tool as we go.
+
 .. image:: ../screenshots/projects/banner.png
    :alt: Duke Nukem II Banner
 
@@ -10,7 +20,9 @@ I decided to tear apart the Duke Nukem II binary recently, mostly for fun and to
 Finding and Understanding the Bug
 =================================
 
-Opened up the binary in Ghidra. By rummaging around, I found a secret function at offset ``0x002f52e2`` that only triggers if you hit “up” at certain computer terminals in-game. This backdoor eventually passes direct user input to another function at ``0x002f5774``, which does a ``memcpy`` from a buffer you control into a local buffer with a size of just 288 bytes. The best part? The copy size is passed in by the user too.
+I opened up the binary in Ghidra, a free reverse engineering tool that lets you analyze executable files and find vulnerabilities. By rummaging around, I found a secret function at offset ``0x002f52e2`` that only triggers if you hit “up” at certain computer terminals in-game. This backdoor eventually passes direct user input to another function at ``0x002f5774``, which does a ``memcpy`` from a buffer you control into a local buffer with a size of just 288 bytes. The best part? The copy size is passed in by the user too.
+
+With the vulnerability identified, the next step is to see how we can exploit it in practice.
 
 Offsets and buffer info:
 
@@ -34,6 +46,8 @@ Design flaw: The input parameter that sets the size of the copy is user-controll
 
 Sledgehammer Approach
 =====================
+
+Let’s start with the simplest method: overwhelming the buffer to see what happens.
 
 The sledgehammer approach just blows past buffer boundaries and trashes the stack with a big chunk of data.
 
@@ -77,6 +91,8 @@ The result: usually a crash, but sometimes enough random luck to trip a shell.
 Ballpeen Hammer Approach (Precise Shell Execution)
 ===================================================
 
+While the sledgehammer method is quick, it’s unreliable. For a consistent exploit, we need a more targeted approach.
+
 This method is more involved but reliable. It needs you to know exactly where to overwrite saved ``rbp`` and the return address so control lands exactly on your shellcode.
 
 Step-by-Step
@@ -97,6 +113,9 @@ Step-by-Step
      - Copy size: ``0x7fffffffc2f0 - 0x7fffffffc170 = 0x280 = 384`` bytes
 
 3. **Build the exploit buffer**
+
+Now that we understand the stack layout, let’s craft the exact buffer needed to hijack execution.
+
    - Shellcode (again, full, uncut):
 
 ::
@@ -147,6 +166,8 @@ Step-by-Step
 
 Final Step
 ----------
+
+With our payload ready, it’s time to put everything together and trigger the exploit in-game.
 
 Once this buffer is submitted at the in-game prompt (after hitting the debug breakpoint), the function returns and control hits your shellcode reliably. A shell pops up.
 
