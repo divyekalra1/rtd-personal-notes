@@ -12,7 +12,8 @@ Make use of the keyboard shortcut ``/`` to search for something.
    :maxdepth: 2
    :hidden:
    :caption: HackTheBox CPTS:
-
+   
+   Boxes Pwned <htb-cpts/boxes>
    Pentesting Process <htb-cpts/pentesting_process>
    Getting Started with HackTheBox <htb-cpts/getting_started_with_hackthebox>
    Nmap <htb-cpts/nmap>
