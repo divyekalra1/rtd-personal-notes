@@ -11,7 +11,7 @@ Make use of the keyboard shortcut ``/`` to search for something.
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: HackTheBox CPTS:
+   :caption: HackTheBox CPTS
    
    Boxes Pwned <htb-cpts/boxes>
    Pentesting Process <htb-cpts/pentesting_process>
@@ -34,6 +34,20 @@ Make use of the keyboard shortcut ``/`` to search for something.
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Duke Nukem II:
+   :caption: Duke Nukem II
    
    Reverse Engineering Project <projects/duke-nukem.rst>
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: AWS Cloud Practitioner
+   
+   AWS Cloud Practitioner <htb-cpts/aws-cloud-practitioner>
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Homelabbing
+   
+   Setup <projects/homelabbing.rst>
