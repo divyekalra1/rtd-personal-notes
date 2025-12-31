@@ -20,7 +20,7 @@ Final requirements looked like this:
 
 1. Sync phone media across devices (iPhone, Android, PC, Mac, fridge if possible)
 2. Have backups off-site (RAID 1 or JBOD mode)
-3. Access data from anywhere in the world via VPN (because "hacker vibes")
+3. Access data from anywhere in the world via VPN
 
 Hardware Recommendations (What I Researched)
 --------------------------------------------
@@ -37,7 +37,7 @@ Software Stack Options
 
 I looked into a few different approaches:
 
-**Option 1: OpenMediaVault + Docker (Recommended)**
+**Option 1: OpenMediaVault + Docker**
 
 - **Base OS:** OpenMediaVault 7 (Debian-based, Pi-optimized)
 - **Storage:** JBOD setup (4TB usable) with backup strategy
@@ -89,7 +89,7 @@ weekly food budget. Hard drives aren't exactly raining from the sky either.
 I even considered an RPi Zero 2W, but Reddit folks were like: *"lol bro, good luck 
 running that with 512MB RAM. Might as well try hosting your cloud on a potato."*
 
-So the thing -- I'm a student, and like most students -- broke af. There's no way I'm 
+So the thing -- I'm a student, and like most students -- broke. There's no way I'm 
 spending 60-90 bucks on a raspberry pi, considering I'd have to get a couple of hard 
 drives too (which aren't very cheap by my standards anyway).
 
