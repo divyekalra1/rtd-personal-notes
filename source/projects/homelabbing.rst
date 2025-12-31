@@ -1,4 +1,4 @@
-RPI Home Cloud Project: How I Accidentally Became a Budget Sysadmin
+Self-Hosting on a Shoestring: Proxmox, TrueNAS, and Networking Hell
 ===================================================================
 
 So here's the deal -- I got tired of paying subscriptions for Google One, iCloud, and
