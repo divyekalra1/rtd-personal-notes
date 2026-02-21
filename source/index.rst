@@ -6,7 +6,15 @@
 Blogs and Personal Notes
 =============================
 
-Make use of the keyboard shortcut ``/`` to search for something.
+This blog is my public notebook — a place where I think out loud, document what I’m building, and break down things I don’t want to forget.
+
+You’ll find notes on homelabs, security experiments, AI workflows, and the occasional deep dive into something that caught my curiosity at 2AM. Some posts are structured guides. Others are messy explorations turned into something useful. Everything here is written with the goal of clarity over perfection.
+
+I built this space because I learn best by writing. If something took me hours to debug, configure, or understand, it probably deserves a post. Future me benefits. Hopefully you do too.
+
+If you enjoy practical breakdowns, real-world tinkering, and honest documentation of wins and mistakes — you’re in the right place.
+
+Let’s build, break, and learn.
 
 .. toctree::
    :maxdepth: 2
