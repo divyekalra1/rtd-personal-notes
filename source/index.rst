@@ -42,20 +42,21 @@ Let’s build, break, and learn.
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Duke Nukem II
-   
-   Reverse Engineering Project <projects/duke-nukem.rst>
+   :caption: Projects
+
+   Reverse Engineering <projects/duke-nukem.rst>
+   SBOM Admission Controller <projects/sbom-admission-controller.rst>
 
 .. toctree::
    :maxdepth: 2
    :hidden:
    :caption: AWS Cloud Practitioner
-   
+
    AWS Cloud Practitioner <htb-cpts/aws-cloud-practitioner>
 
 .. toctree::
    :maxdepth: 2
    :hidden:
    :caption: Homelabbing
-   
+
    Setup <projects/homelabbing.rst>
